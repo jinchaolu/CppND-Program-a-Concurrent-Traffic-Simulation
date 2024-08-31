@@ -17,6 +17,15 @@ void MessageQueue<T>::send(T &&msg)
 {
     // FP.4a : The method send should use the mechanisms std::lock_guard<std::mutex> 
     // as well as _condition.notify_one() to add a new message to the queue and afterwards send a notification.
+
+    // Lock
+    std::lock_guard<std::mutex> uLock(_mutex);
+
+    // Add new message to queue
+    _queue.push_back(std::move(msg));
+
+    // Send a notification
+    _condition.notify_one();
 }
 
 /* Implementation of class "TrafficLight" */
@@ -81,7 +90,7 @@ void TrafficLight::cycleThroughPhases()
             }
 
             // Send update method to message queue with using move semantics
-            // TODO:
+            _queue.send(std::move(_currentPhase));
 
             // Update prevTime and cycleTime
             prevTime = currTime;
