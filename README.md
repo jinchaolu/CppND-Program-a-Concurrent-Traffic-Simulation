@@ -37,3 +37,36 @@ When the project is built initially, all traffic lights will be green. When you 
 - **Task FP.4** : Implement the method `Send`, which should use the mechanisms `std::lock_guard<std::mutex>` as well as `_condition.notify_one()` to add a new message to the queue and afterwards send a notification. Also, in class `TrafficLight`, create a private member of type `MessageQueue` for messages of type `TrafficLightPhase` and use it within the infinite loop to push each new `TrafficLightPhase` into it by calling send in conjunction with move semantics.
 - **Task FP.5** : The method receive should use `std::unique_lock<std::mutex>` and `_condition.wait()` to wait for and receive new messages and pull them from the queue using move semantics. The received object should then be returned by the receive function. Then, add the implementation of the method `waitForGreen`, in which an infinite while-loop runs and repeatedly calls the `receive` function on the message queue. Once it receives `TrafficLightPhase::green`, the method returns.
 - **Task FP.6** : In class Intersection, add a private member `_trafficLight` of type `TrafficLight`. In method `Intersection::simulate()`, start the simulation of `_trafficLight`. Then, in method `Intersection::addVehicleToQueue`, use the methods `TrafficLight::getCurrentPhase` and `TrafficLight::waitForGreen` to block the execution until the traffic light turns green.
+
+## Project Rubric  
+### 1. FP.1 Create a TrafficLight class
+#### 1.1 The `TrafficLight` class is defined
+Yes, it is.
+#### 1.2 The `TrafficLight` class methods are completed
+Yes, it is.
+### 2. FP.2: Implement a cycleThroughPhases method
+#### 2.1 The `cycleThroughPhases()` method is implemented.
+Yes, it is.
+#### 2.2 The `cycleThroughPhases()` method is started correctly.
+Yes, it is.
+### 3. FP.3 Define class MessageQueue
+#### 3.1 A `MessageQueue` class is defined
+Yes, it is.
+#### 3.2 The `MessageQueue` class methods and members are declared correctly
+Yes, it is.
+### 4. FP.4 Implement the method `send`
+#### 4.1 The method `send` is correctly implemented
+Yes, it is.
+### 5. FP.5 Implement the methods `receive` and `waitForGreen`
+#### 5.1 The method `receive` is correctly implemented
+Yes, it is.
+#### 5.2 The method `waitForGreen` is correctly implemented
+Yes, it is.
+### 6. FP.6 Implement message exchange
+#### 6.1 The message exchange is correctly implemented
+Yes, it is.
+
+## Photos
+### 1. Example
+#### 1.1 Example 1
+![example_1.gif](photos/example_1.gif)
